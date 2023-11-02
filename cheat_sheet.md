@@ -467,3 +467,55 @@ origin    git@github.com:bla-bla-bla/git-clone-lesson.git (push)
 ## Выполняем Fork
 
 «Форк» создаёт копию существующего репозитория в аккаунте на GitHub, позволяя вносить изменения в репозиторий независимо от оригинального проекта.
+
+
+# Что такое ветка
+
+**Ветки** — независимые потоки разработки.
+
+## Просмотреть ветки проекта — `git branch`
+
+При вызове `git branch` выводятся ветки, которые есть в проекте. Звёздочкой (__*__) отмечено, в какой ветке вы находитесь в текущий момент.
+
+```bash
+$ git branch 
+* main # мы в основной ветке
+# чтобы выйти из просмотра веток, может понадобиться Q!
+```
+
+## Создать ветку — `git branch <название_ветки>`
+
+Используют указатели `feature` для веток, где прорабатывается новая функциональность, и `bugfix`  для веток, где ведётся работа по исправлению ошибок.
+
+```bash
+$ git branch feature/add-branch-info # создали ветку feature/add-branch-info
+$ git branch # посмотрели ветки
+  
+  feature/add-branch-info  # появилась новая
+* main                     # * значит, что мы находимся в основной ветке
+```
+
+## Переключиться на другую ветку — `git checkout <название_ветки>`
+
+```bash
+$ git checkout feature/add-branch-info # перешли в новую ветку
+Switched to branch 'feature/add-branch-info'
+
+$ git branch # проверили
+
+* feature/add-branch-info # теперь находимся тут
+  main
+```
+
+## Создать ветку и сразу переключиться на неё — `git checkout -b <название_ветки>`
+
+```bash
+$ git checkout main
+$ git checkout -b bugfix/fix-branch # создали ветку и сразу на неё переключились
+Switched to a new branch 'bugfix/fix-branch'
+
+$ git branch
+* bugfix/fix-branch # сразу в нужной ветке
+  feature/add-branch-info
+  main
+```
