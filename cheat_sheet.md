@@ -448,3 +448,22 @@ docs/*/tmp
 
 Если нужно отобразить все игнорируемые файлы, то это можно сделать с помощью ключа `--ignored`: `git status --ignored`. В таком случае в выводе `git status` появится раздел `Ignored files`.
 
+
+# Копирование репозиториев
+
+## Клонируем репозиторий - `git clone`
+
+Команда `git clone` автоматически связывает локальный и удалённый репозиторий
+
+```bash
+$ git clone https://github.com/bla-bla-bla/git-clone-lesson
+# укажите адрес репозитория, который нужно склонировать
+$ cd bla-bla-bla
+$ git remote -v
+origin    git@github.com:bla-bla-bla/git-clone-lesson.git (fetch)
+origin    git@github.com:bla-bla-bla/git-clone-lesson.git (push)
+```
+
+## Выполняем Fork
+
+«Форк» создаёт копию существующего репозитория в аккаунте на GitHub, позволяя вносить изменения в репозиторий независимо от оригинального проекта.
