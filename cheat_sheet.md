@@ -558,3 +558,52 @@ $ git diff feature/diff~1 feature/diff
 $ git diff 2ea56ab~ 2ea56ab
 ```
 
+## Выполнить слияние — `git merge <название_ветки>`
+
+Перед тем как начать процесс слияния, нужно перейти в ветку, куда должны добавиться изменения.
+
+```bash
+$ git checkout main # переключились на главную ветку
+
+$ git merge feature/diff # объединили ветки
+Updating 079cfbf..f30d441 # коммиты c 079cfbf по f30d441 были объединены
+Fast-forward # это режим слияния - перемотка
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+```
+
+Можно проверить с помощью `git log --oneline`
+
+```bash
+$ git log --oneline
+
+f30d441 (HEAD -> main, feature/diff) Добавить описание git diff в README
+079cfbf Добавить git branch в README.
+7ad18bd Добавить файл README
+```
+
+## Удалить ветку после объединения — `git branch -D <название_ветки>`
+
+После того как произошло слияние, ветку-донора можно удалить
+
+```bash
+$ git branch # проверяем местоположение
+  bugfix/fix-branch
+  feature/add-branch-info
+  feature/diff
+* main
+
+$ git checkout main # если не в основной, переходим в неё
+
+$ git branch -D feature/diff # удаляем поглощаемую ветку
+Deleted branch feature/diff (was f30d441).
+```
+
+Если в момент удаления вы будете находиться в той ветке, которую хотите удалить, `Git` сообщит об ошибке: c`an not delete branch`
+
+У команды `git branch -D` есть более безопасный вариант с флагом `-d`. Он удалит ветку только если она была полностью объединена с другой.
+
+:lamp: Удаление локальной ветки через `Git` не удаляет ветку на `GitHub`!
+
+Под решение каждой задачи имеет смысл завести свою ветку, а после слияния — удалить её.
+
